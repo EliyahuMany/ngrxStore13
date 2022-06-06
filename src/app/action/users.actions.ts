@@ -15,11 +15,20 @@ export const LoadUsersFailure = createAction(
 );
 
 export const AddUsers = createAction(
-  '[Users] USER LOAD USERS',
+  '[Users] USER ADD USERS',
 );
 
 export const AddUsersSuccess = createAction(
-  '[Users] USER LOAD USERS Success',
+  '[Users] USER ADD USERS Success',
+  props<{ data: any }>()
+);
+
+export const DeleteSpecificUser = createAction(
+  '[Users] SPECIFIC USER DELETE USER',
+);
+
+export const DeleteSpecificUserSuccess = createAction(
+  '[Users] SPECIFIC USER DELETE USER Success',
   props<{ data: any }>()
 );
 
@@ -28,3 +37,6 @@ export const AddUsersFailure = createAction(
   props<{ error: any }>()
 );
 
+export const DeleteUser = createAction(
+  '[Users] USER DELETE USERS',
+)

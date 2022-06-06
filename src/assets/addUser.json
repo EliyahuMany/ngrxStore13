@@ -1,0 +1,15 @@
+[{
+  "_id": "a1cd6070efd21376cf9d1d58",
+  "picture": "http://placehold.it/32x32",
+  "age": 65,
+  "eyeColor": "blue",
+  "name": "David Beckham",
+  "gender": "male",
+  "company": "Man UTD",
+  "email": "davidbeck@manutd.com",
+  "phone": "+1 (832) 516-2520",
+  "address": "720 Cumberland Street, Jessie, Georgia, 4181",
+  "registered": "2021-03-03T06:06:31 -02:00",
+  "latitude": -84.863495,
+  "longitude": 151.533095
+}]

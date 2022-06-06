@@ -1,10 +1,10 @@
-import { AppState } from './reducers/index';
-import { UsersService } from './users.service';
-import { Component } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { loadUsers, LoadUsersSuccess } from './action/users.actions';
-import { User } from './models/user';
-
+import {AppState, selectUsers} from './reducers/index';
+import {UsersService} from './users.service';
+import {Component} from '@angular/core';
+import {Store} from '@ngrx/store';
+import {AddUsers, AddUsersSuccess, loadUsers, DeleteSpecificUser, DeleteUser} from './action/users.actions';
+import {User} from './models/user';
+import {Observable} from "rxjs";
 
 
 @Component({
@@ -14,18 +14,36 @@ import { User } from './models/user';
 })
 export class AppComponent {
   title = 'ngrxStore';
-  users: any | undefined;
-  constructor(private usersService:UsersService,private store: Store<AppState>){}
+  usersList: Observable<User[]> | undefined;
 
-showConfig() {
-  this.usersService.getConfig()
-    .subscribe((data: any) => {
-      this.store.dispatch(LoadUsersSuccess({ data }));
+  constructor(private usersService: UsersService, private store: Store<AppState>) {
+    this.usersList = this.store.select(selectUsers);
+  }
 
-    } );
-}
-// showConfig(){
-//   // const user:User={}
-//   this.store.dispatch(loadUsers());
+
+
+// showConfig() {
+
+//   this.usersService.getConfig()
+//     .subscribe((data: any) => {
+//       this.store.dispatch(LoadUsersSuccess({ data }));
+
+//     } );
 // }
+
+  AddUser() {
+    this.store.dispatch(AddUsers())
+  }
+
+  DeleteUser() {
+    this.store.dispatch(DeleteUser())
+  }
+
+  DeleteSpecificUser() {
+    this.store.dispatch(DeleteSpecificUser())
+  }
+
+  showConfig() {
+    this.store.dispatch(loadUsers());
+  }
 }
